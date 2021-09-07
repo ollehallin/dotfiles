@@ -41,7 +41,7 @@
   - functions/sdk.fish
 
 - name: Add SDKMAN paths to PATH
-  shell: /usr/bin/fish -c "fisher install reitzig/sdkman-for-fish"
+  shell: /usr/bin/fish -c "fisher install reitzig/sdkman-for-fish@v1.4.0"
 
 - name: Set correct ownership of {{ fish_config_dir }}
   file: dest={{ fish_config_dir }} owner={{ actual_username }} group={{ actual_username }} recurse=yes
