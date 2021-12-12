@@ -10,12 +10,10 @@
     jetbrains_toolbox_archive: jetbrains-toolbox-{{ jetbrains_toolbox_version }}.tar.gz
     jetbrains_toolbox_url: https://download.jetbrains.com/toolbox/{{ jetbrains_toolbox_archive }}
     sdkman_install_packages:
-        - { candidate: java, version: '11.0.9-zulu' }
-        - { candidate: java, version: '8.0.272-zulu' }
+        - { candidate: java, version: '11.0.13-zulu' }
+        - { candidate: java, version: '8.0.302-zulu' }
     sdkman_defaults:
-        java: '11.0.9-zulu'
-    slack_version: 4.8.0
-    slack_archive: https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack_version }}-amd64.deb
+        java: '11.0.13-zulu'
     dropbox_version: 2020.03.04
     dropbox_archive: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_{{ dropbox_version }}_amd64.deb
 
