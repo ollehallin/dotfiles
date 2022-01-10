@@ -43,7 +43,5 @@
     - { import_tasks: tasks/scala-remove.yml, tags: [ compilers, scala ] }
     - { import_tasks: tasks/slack.yml, tags: slack }
     - { import_tasks: tasks/spotify.yml, tags: spotify }
-    - { import_tasks: tasks/vagrant.yml, tags: vagrant }
-    - { import_tasks: tasks/virtualbox.yml, tags: virtualbox }
     - { import_tasks: tasks/xdg-mime.yml, tags: xdg-mime }
     - { import_tasks: tasks/yarn.yml, tags: yarn }
