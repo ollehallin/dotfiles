@@ -15,7 +15,7 @@
 - name: Install Calibre
   shell:
     cmd: "{{ calibre_installer_local }}"
-    creates: "/usr/bin/calibre"
+    # creates: "/usr/bin/calibre"
 
 - name: Create Calibre config directory
   file:
