@@ -1,6 +1,6 @@
 function aws_token
-  if test -n $argv[1]
-      set aws_profile $argv[1]
+  if test -n "$argv[1]"
+      set aws_profile "$argv[1]"
   else
       set aws_profile (aws configure list-profiles | fzf --header 'AWS profile')
   end

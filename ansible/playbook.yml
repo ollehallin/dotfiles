@@ -3,7 +3,7 @@
   connection: local
   become: yes
   vars:
-    docker_compose_version: "1.26.0"
+    docker_compose_version: "1.29.2"
     docker_machine_version: "0.16.0"
     jetbrains_toolbox_version: "1.18.7455"
     jetbrains_toolbox_checksum: "sha256:5d8acef010816cec5082e37cf07607c59cf1534d3fd7d9546d5cbb55149cdd54"
