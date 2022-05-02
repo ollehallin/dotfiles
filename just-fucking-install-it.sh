@@ -1,17 +1,11 @@
 #!/bin/bash
 
-if [[ "$(command -v ansible)" == "/usr/bin/ansible" ]]; then
-    echo "Removing apt-installed ansible:"
-    sudo apt remove ansible
-fi
-if [[ "$(command -v pip3)" == "" ]]; then
-    echo "Installing python3-pip:"
-    sudo apt install python3-pip
-fi
-
 if [[ "$(command -v ansible)" == "" ]]; then
-    echo "Installing Ansible with pip3:"
-    sudo pip3 install ansible
+    echo "Installing Ansible:"
+    sudo apt update
+    sudo apt install software-properties-common
+    sudo add-apt-repository --yes --update ppa:ansible/ansible
+    sudo apt install --yes ansible
 fi
 
 if [[ "$(command -v git-crypt)" == "" ]]; then
