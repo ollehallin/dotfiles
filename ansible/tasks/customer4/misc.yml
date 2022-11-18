@@ -32,3 +32,16 @@
 - name: Increase vm.max_map_count for ElasticSearch in Docker
   template: src=sysctl/90-elasticsearch.conf dest=/etc/sysctl.d/90-elasticsearch.conf
   notify: sysctl --system
+
+- set_fact:
+    aws_ssm_plugin: https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb
+    aws_ssm_plugin_local: "/tmp/aws-session-manager-plugin.deb"
+
+- name: Download AWS Session Manager Plugin
+  get_url:
+    url: "{{ aws_ssm_plugin }}"
+    dest: "{{ aws_ssm_plugin_local }}"
+    mode: 0755
+
+- name: Install AWS Session Manager Plugin
+  shell: dpkg -i {{ aws_ssm_plugin_local }}
