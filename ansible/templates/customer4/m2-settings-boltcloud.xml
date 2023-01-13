@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>{{ secrets.customer4.artifactory.username }}</username>
+      <password>{{ secrets.customer4.artifactory.password }}</password>
+      <id>central</id>
+    </server>
+    <server>
+      <username>{{ secrets.customer4.artifactory.username }}</username>
+      <password>{{ secrets.customer4.artifactory.password }}</password>
+      <id>snapshots</id>
+    </server>
+    <server>
+      <username>{{ secrets.customer4.artifactory.username }}</username>
+      <password>{{ secrets.customer4.artifactory.password }}</password>
+      <id>global-maven-virtual</id>
+    </server>
+  </servers>
+  <mirrors>
+    <mirror>
+      <mirrorOf>*</mirrorOf>
+      <name>global-maven-virtual</name>
+      <url>{{ secrets.customer4.artifactory.host }}/artifactory/global-maven-virtual</url>
+      <id>global-maven-virtual</id>
+    </mirror>
+  </mirrors>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>{{ secrets.customer4.artifactory.host }}/artifactory/libs-release</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>{{ secrets.customer4.artifactory.host }}/artifactory/libs-snapshot</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>plugins-release</name>
+          <url>{{ secrets.customer4.artifactory.host }}/artifactory/plugins-release</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>plugins-snapshot</name>
+          <url>{{ secrets.customer4.artifactory.host }}/artifactory/plugins-snapshot</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+</settings>

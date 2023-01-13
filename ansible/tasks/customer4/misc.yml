@@ -14,14 +14,32 @@
     owner: "{{ actual_username }}"
     group: "{{ actual_username }}"
 
-- name: Install ~/.m2/settings.xml
+- name: Install ~/.m2/settings-discocloud.xml
   template:
-    src: customer4/m2-settings.xml
-    dest: "{{ actual_home }}/.m2/settings.xml"
+    src: customer4/m2-settings-discocloud.xml
+    dest: "{{ actual_home }}/.m2/settings-discocloud.xml"
     mode: 0755
     owner: "{{ actual_username }}"
     group: "{{ actual_username }}"
     backup: yes
+
+- name: Install ~/.m2/m2-settings-boltcloud.xml
+  template:
+    src: customer4/m2-settings-boltcloud.xml
+    dest: "{{ actual_home }}/.m2/settings-boltcloud.xml"
+    mode: 0755
+    owner: "{{ actual_username }}"
+    group: "{{ actual_username }}"
+    backup: yes
+
+- name: Make Artifactory default
+  file:
+    src: "{{ actual_home }}/.m2/settings-boltcloud.xml"
+    dest: "{{ actual_home }}/.m2/settings.xml"
+    state: link
+    mode: 0755
+    owner: "{{ actual_username }}"
+    group: "{{ actual_username }}"
 
 - name: Install Postman
   snap: name=postman state=present
@@ -45,3 +63,20 @@
 
 - name: Install AWS Session Manager Plugin
   shell: dpkg -i {{ aws_ssm_plugin_local }}
+
+- name: Install Krew
+  shell:
+    cmd: HOME="{{ actual_home }}" files/customer4/install-krew.sh
+    creates: "{{ actual_home }}/.krew/bin"
+
+- name: Change owner of Krew
+  file:
+     path: "{{ actual_home }}/.krew"
+     state: directory
+     recurse: true
+     mode: 0755
+     owner: "{{ actual_username }}"
+     group: "{{ actual_username }}"
+
+- name: "Add {{ actual_home }}/.krew/bin to PATH"
+  shell: /usr/bin/fish -c "set -gx PATH {{ path }} {{ actual_home }}/.krew/bin"

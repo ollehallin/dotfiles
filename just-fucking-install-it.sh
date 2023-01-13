@@ -21,7 +21,7 @@ trap 'sudo chown -R "${USER}"."${USER}" ~/.netrc ~/.cache' EXIT
 sudo touch ~/.netrc
 sudo chown root.root ~/.netrc
 
-sudo ansible-playbook -i inventory "${PLAYBOOK:-playbook.yml}" -e "pwd=${PWD}" -e "actual_home=${HOME}" -e "actual_username=${USER}" $*
+sudo ansible-playbook -i inventory "${PLAYBOOK:-playbook.yml}" -e "path=${PATH}" -e "pwd=${PWD}" -e "actual_home=${HOME}" -e "actual_username=${USER}" $*
 
 # Restore ownership of certain directories
 sudo chown -R ${USER}.${USER} $HOME/.gradle
