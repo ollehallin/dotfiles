@@ -77,6 +77,3 @@
      mode: 0755
      owner: "{{ actual_username }}"
      group: "{{ actual_username }}"
-
-- name: "Add {{ actual_home }}/.krew/bin to PATH"
-  shell: /usr/bin/fish -c "set -gx PATH {{ path }} {{ actual_home }}/.krew/bin"

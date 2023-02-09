@@ -39,6 +39,7 @@
   - functions/fuck.fish
   - functions/mkd.fish
   - functions/sdk.fish
+  - functions/set_kubeconfig.fish
 
 - name: Add SDKMAN paths to PATH
   shell: /usr/bin/fish -c "fisher install reitzig/sdkman-for-fish@v1.4.0"
