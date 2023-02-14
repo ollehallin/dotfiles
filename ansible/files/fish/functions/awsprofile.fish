@@ -1,4 +1,4 @@
-function aws_token
+function awsprofile
   if test -n "$argv[1]"
       set aws_profile "$argv[1]"
   else
@@ -11,8 +11,4 @@ function aws_token
       set -gx AWS_PROFILE "$aws_profile"
       aws --no-cli-pager sts get-caller-identity
   end
-end
-
-function awsprofile
-    aws_token $argv
 end

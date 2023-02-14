@@ -28,11 +28,12 @@
     dest: "{{ fish_config_dir }}/{{ item }}"
   with_items:
   - completions/aws.fish
+  - completions/awsprofile.fish
   - completions/docker.fish
   - completions/sdk.fish
   - functions/ansible-facts-cache-off.fish
   - functions/ansible-facts-cache-on.fish
-  - functions/aws_token.fish
+  - functions/awsprofile.fish
   - functions/fish_prompt.fish
   - functions/fish_user_key_bindings.fish
   - functions/fisher.fish
