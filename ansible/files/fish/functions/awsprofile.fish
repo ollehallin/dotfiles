@@ -8,6 +8,7 @@ function awsprofile
       if ! aws --profile "$aws_profile" sts get-caller-identity > /dev/null 2>&1
           gimme-aws-creds --profile "$aws_profile"
       end
+      echo "Setting AWS_PROFILE to $aws_profile"
       set -gx AWS_PROFILE "$aws_profile"
       aws --no-cli-pager sts get-caller-identity
   end
