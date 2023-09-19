@@ -45,7 +45,7 @@
   snap: name=postman state=present
 
 - name: Install Gimme AWS Creds
-  command: pip3 install --upgrade gimme-aws-creds
+  command: pip3 install --upgrade gimme-aws-creds --break-system-packages
 
 - name: Increase vm.max_map_count for ElasticSearch in Docker
   template: src=sysctl/90-elasticsearch.conf dest=/etc/sysctl.d/90-elasticsearch.conf

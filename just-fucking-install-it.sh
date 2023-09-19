@@ -17,14 +17,14 @@ if [[ "$(command -v git-crypt)" == "" ]]; then
 fi
 
 cd "$(dirname "$0")/ansible" || exit
-trap 'sudo chown -R "${USER}"."${USER}" ~/.netrc ~/.cache' EXIT
+trap 'sudo chown -R "${USER}":"${USER}" ~/.netrc ~/.cache' EXIT
 sudo touch ~/.netrc
-sudo chown root.root ~/.netrc
+sudo chown root:root ~/.netrc
 
 sudo ansible-playbook -i inventory "${PLAYBOOK:-playbook.yml}" -e "path=${PATH}" -e "pwd=${PWD}" -e "actual_home=${HOME}" -e "actual_username=${USER}" $*
 
 # Restore ownership of certain directories
-sudo chown -R ${USER}.${USER} $HOME/.gradle
+sudo chown -R ${USER}:${USER} $HOME/.gradle
 
 # These are hard to set via Ansible. Do it in a simpler way...
 # gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "'<Ctrl>section'"
