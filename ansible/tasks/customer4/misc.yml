@@ -23,7 +23,7 @@
     group: "{{ actual_username }}"
     backup: yes
 
-- name: Install ~/.m2/m2-settings-boltcloud.xml
+- name: Install ~/.m2/settings-boltcloud.xml
   template:
     src: customer4/m2-settings-boltcloud.xml
     dest: "{{ actual_home }}/.m2/settings-boltcloud.xml"
@@ -77,3 +77,8 @@
      mode: 0755
      owner: "{{ actual_username }}"
      group: "{{ actual_username }}"
+
+- name: Install OpenConnect client
+  package: name={{ item }} state=present
+  with_items:
+    - network-manager-openconnect-gnome
