@@ -2,6 +2,9 @@
 - name: Uninstall Calibre that was installed from APT
   package: name=calibre state=absent
 
+- name: Install required packages
+  package: name=libxcb-cursor0 state=present
+
 - set_fact:
     calibre_installer: "https://download.calibre-ebook.com/linux-installer.sh"
     calibre_installer_local: "/tmp/calibre-installer.sh"

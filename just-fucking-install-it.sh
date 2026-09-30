@@ -1,11 +1,16 @@
 #!/bin/bash
 
+if [[ "$(find /usr/local/bin -name 'ansible*' | wc -l)" -gt 0 ]]; then
+    echo "Removing non-APT Ansible from /usr/local/bin/ ..."
+    sudo rm /usr/local/bin/ansible*
+fi
+
 if [[ "$(command -v ansible)" == "" ]]; then
     echo "Installing Ansible:"
     sudo apt update
-    sudo apt install software-properties-common
-    sudo add-apt-repository --yes --update ppa:ansible/ansible
-    sudo apt install --yes ansible
+    # sudo apt install software-properties-common
+    # sudo add-apt-repository --yes --update ppa:ansible/ansible
+    sudo apt install --yes ansible-core
 fi
 
 if [[ "$(command -v git-crypt)" == "" ]]; then

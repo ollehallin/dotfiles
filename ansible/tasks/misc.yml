@@ -7,13 +7,12 @@
     - curl
     - dconf-cli
     - encfs
-    - gnome-gmail
     - gpg
     - jq
     - libimage-exiftool-perl
-    - nixnote2
     - oathtool
     - openssh-server
+    - rename
     - synaptic
     - tree
     - unzip

@@ -5,7 +5,7 @@
 
 REAL_HOME=$HOME
 
-for dropbox in .dropbox-personal .dropbox-crisp; do
+for dropbox in .dropbox-personal; do
     echo -n "$dropbox "; read
     DROPBOXD="$REAL_HOME/$dropbox/.dropbox-dist/dropboxd"
     if ! [ -f "$DROPBOXD" ]; then
