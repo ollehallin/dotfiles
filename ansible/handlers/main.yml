@@ -21,3 +21,6 @@
 
 - name: xdg-mime default ssh.desktop x-scheme-handler/ssh
   shell: xdg-mime default ssh.desktop x-scheme-handler/ssh
+
+- name: xdg-mime default google-maps-geo.desktop x-scheme-handler/geo
+  shell: xdg-mime default google-maps-geo.desktop x-scheme-handler/geo

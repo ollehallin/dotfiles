@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Google Maps Launcher
+Exec={{ actual_home }}/bin/loupe-maps-bridge.sh %u
+Icon=maps
+MimeType=x-scheme-handler/geo;
+NoDisplay=true
