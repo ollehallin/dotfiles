@@ -64,25 +64,3 @@
     group: "{{ actual_username }}"
     mode: 755
 
-- name: Import Codekvast GPG keypair
-  shell: gpg --import {{ item }}
-  ignore_errors: yes
-  with_items:
-    - vars/codekvast.gpg.pub
-    - vars/codekvast.gpg.priv
-
-- name: Edit $HOME/.gradle/gradle.properties
-  blockinfile:
-    dest: "{{ actual_home }}/.gradle/gradle.properties"
-    create: yes
-    backup: yes
-    owner: "{{ actual_username }}"
-    group: "{{ actual_username }}"
-    mode: 0600
-    block: |
-      codekvast.bintray.user={{ secrets.bintray.user }}
-      codekvast.bintray.key={{ secrets.bintray.key }}
-
-      codekvast.gpg.keyId={{ secrets.codekvast.gpg.keyId }}
-      codekvast.gpg.password={{ secrets.codekvast.gpg.password }}
-      codekvast.gpg.secretKeyRingFile={{ actual_home }}/.gnupg/codekvast.kbx

@@ -6,8 +6,6 @@
   shell: aws --profile {{ item }} sts get-caller-identity
   with_items:
   - hit
-  - crisp
-  - codekvast
 
 - name: systemctl daemon-reload
   shell: systemctl daemon-reload
