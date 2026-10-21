@@ -10,13 +10,10 @@
 
 - name: Install handler for geo:// links
   template:
-    src: "{{ item }}"
-    dest: "{{ actual_home }}/.local/{{item.d}}/{{ item.s }}"
+    src: google-maps-geo.desktop
+    dest: "{{ actual_home }}/.local/share/applications/google-maps-geo.desktop"
     owner: "{{ actual_username }}"
     group: "{{ actual_username }}"
     mode: 0644
   notify: xdg-mime default google-maps-geo.desktop x-scheme-handler/geo
-  with_items:
-    - {s: google-maps-geo.desktop, d: share/applications}
-    - {s: loupe-maps-bridge.desktop, d: bin}
 

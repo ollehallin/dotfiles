@@ -53,6 +53,7 @@
     group: "{{ actual_username }}"
     mode: 0755
   with_items:
+    - loupe-maps-bridge.sh
     - mfa.sh
 
 - name: Create $HOME/.gradle
