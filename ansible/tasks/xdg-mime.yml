@@ -10,10 +10,14 @@
 
 - name: Install handler for geo:// links
   template:
-    src: google-maps-geo.desktop
-    dest: "{{ actual_home }}/.local/share/applications/google-maps-geo.desktop"
-    owner: "{{ actual_username }}"
-    group: "{{ actual_username }}"
-    mode: 0644
-  notify: xdg-mime default google-maps-geo.desktop x-scheme-handler/geo
-
+    src: "{{ item.t }}"
+    dest: "{{ item.d }}"
+    owner: root
+    group: root
+    mode: "{{ item.m }}"
+  with_items:
+    - {t: google-maps-geo.desktop, d: /usr/share/applications/google-maps-geo.desktop, m: 0644 }
+    - {t: open-geo-link.sh, d: /usr/local/bin/open-geo-link, m: 0755 }
+  notify:
+  - xdg-mime default google-maps-geo.desktop x-scheme-handler/geo
+  - update-desktop-database

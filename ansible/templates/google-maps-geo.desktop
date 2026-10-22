@@ -1,7 +1,7 @@
 [Desktop Entry]
+Version=1.0
 Type=Application
-Name=Google Maps Launcher
-Exec={{ actual_home }}/bin/loupe-maps-bridge.sh %u
-Icon=maps
+Name=Geo URL Handler
 MimeType=x-scheme-handler/geo;
-NoDisplay=true
+Terminal=false
+Exec=/usr/local/bin/open-geo-link %u

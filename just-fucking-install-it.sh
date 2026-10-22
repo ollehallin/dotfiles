@@ -37,3 +37,24 @@ gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier "'<Alt><Sup
 gsettings set org.gnome.desktop.wm.preferences button-layout 'close,maximize,minimize:'
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.desktop.interface clock-show-seconds true
+
+# Install a custom key binding for doing xdg-open for what is in the clipboard
+#!/bin/bash
+PATH_SHORTCUT="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+SCHEMA_SHORTCUT="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:$PATH_SHORTCUT"
+
+# Configure the shortcut to point to the renamed script
+gsettings set "$SCHEMA_SHORTCUT" name 'Open Geo from clipboard'
+gsettings set "$SCHEMA_SHORTCUT" command '/usr/local/bin/open-geo-link'
+gsettings set "$SCHEMA_SHORTCUT" binding '<Super>g'
+
+# Append to the list of active custom shortcuts without overwriting existing ones
+CURRENT_BINDINGS=$(gsettings get org.gnome.settings-daemon.plugins.media-keys custom-keybindings)
+if [[ "$CURRENT_BINDINGS" == "@as []" || "$CURRENT_BINDINGS" == "[]" ]]; then
+    gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['$PATH_SHORTCUT']"
+elif [[ "$CURRENT_BINDINGS" != *"$PATH_SHORTCUT"* ]]; then
+    NEW_BINDINGS=$(echo "$CURRENT_BINDINGS" | sed "s|\]|, '$PATH_SHORTCUT'\]|")
+    gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "$NEW_BINDINGS"
+fi
+
+echo "Super+G now utilize the 'open-geo-link' script."

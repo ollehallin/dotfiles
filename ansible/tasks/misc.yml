@@ -17,6 +17,7 @@
     - tree
     - unzip
     - wget
+    - wl-clipboard
     - xemacs21
 
 - name: Remove obsolete apt packages
@@ -53,7 +54,6 @@
     group: "{{ actual_username }}"
     mode: 0755
   with_items:
-    - loupe-maps-bridge.sh
     - mfa.sh
 
 - name: Create $HOME/.gradle

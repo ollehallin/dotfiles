@@ -24,3 +24,6 @@
 
 - name: xdg-mime default google-maps-geo.desktop x-scheme-handler/geo
   shell: xdg-mime default google-maps-geo.desktop x-scheme-handler/geo
+
+- name: update-desktop-database
+  shell: update-desktop-database
